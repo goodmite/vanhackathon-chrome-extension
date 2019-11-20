@@ -1,0 +1,89 @@
+@mixin center-vertical{
+  display: flex;
+  align-items: center;
+}
+
+@mixin center-horizontal{
+  display: flex;
+  justify-content: center;
+}
+@mixin center-vertical-horizontal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@import "./variables";
+
+@mixin hide-borders{
+  border: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+//@mixin typography($size, $line-height, $weight, $color){
+//  font-size: $size;
+//  line-height: $line-height;
+//  font-weight: $weight;
+//  color: $color;
+//  font-family: "Helvetica", sans-serif;
+//}
+
+@mixin margin-padding-0(){
+  margin: 0;
+  padding: 0;
+}
+@mixin classic-modal($color){
+  background-color: white;
+  margin-top:0;
+  border-radius: 4px;
+  .top-dec{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    height: 10px;
+    background-color: $color;
+  }
+  .modal-header{
+    color: #474747;
+
+    .modal-title{
+      width: 100%;
+      font-size: 20px;
+      text-align: left;
+      color: #474747;
+    }
+  }
+  .modal-body{
+    color: #474747;
+    font-size: 12px;
+    text-align: center;
+    padding-bottom:10px ;
+
+  }
+}
+
+@function remy($pxsize) {
+  @return ($pxsize/16)+rem;
+}
+
+@mixin radio-dia($dia) {
+  .mat-radio-container{
+    height: $dia;
+    width: $dia;
+  }
+  .mat-radio-outer-circle{
+    height: $dia;
+    width: $dia;
+  }
+  .mat-radio-inner-circle{
+    height: $dia;
+    width: $dia;
+  }
+  .mat-radio-button .mat-radio-ripple{
+    height: 20px; //double of your required circle radius
+    width: 20px;  //double of your required circle radius
+    left: calc(50% - 10px); //'10px'-same as your required circle radius
+    top: calc(50% - 10px); //'10px'-same as your required circle radius
+  }
+}

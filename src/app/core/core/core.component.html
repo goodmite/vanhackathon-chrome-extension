@@ -1,0 +1,51 @@
+<nz-layout class="layout">
+  <nz-sider
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzBreakpoint]="'lg'"
+    [nzCollapsedWidth]="0"
+    [nzZeroTrigger]="zeroTrigger">
+    <ngp-side-bar-detail [sideBarTab]="selectedTab" (sidebarTabChanged$)="sidebarTabChangedHandler($event)"></ngp-side-bar-detail>
+  </nz-sider>
+  <nz-layout>
+    <nz-header style=" position: fixed;
+        width: 100%; z-index: 2">
+      <ngp-profile-header [user]="user"
+                          (sidebarTabChanged$)="sidebarTabChangedHandler($event)"
+                          (logout$)="logout$.emit()" [tabMap]="tabMap"
+                          [tab]="selectedTab"></ngp-profile-header>
+    </nz-header>
+    <!--    <nz-spin [nzSpinning]="isSpinning">-->
+    <nz-content style="margin-top: 78px;">
+      <nz-spin *loadify="{ partialPath: 'api/v1'}; let statusChanged$=statusChanged$"
+               [nzSpinning]="(statusChanged$|async)?.loading">
+        <div class="inner-content" style="position: relative">
+          <ngp-calander [events]="events" *ngIf="selectedTab === EProfileTab.events"></ngp-calander>
+                  <ngp-notification [notification]="notification"  (markAsRead$)="markAsReadHandler($event)" *ngIf="selectedTab === EProfileTab.notifications"></ngp-notification>
+<!--          <div class="center-absolute">-->
+<!--            <nz-empty></nz-empty>-->
+<!--          </div>-->
+          <div>
+            <ngp-all-jobs
+              (filterJobs$)="filterJobsHandler($event)"
+              (applyForJob$)="applyForJobHandler($event)" [jobs]="jobs"
+              *ngIf="selectedTab === EProfileTab.allJobs"></ngp-all-jobs>
+          </div>
+          <ngp-my-jobs (loadJobs)="loadJobsHandler($event)" [jobs]="jobs"
+                       [expand]="false"
+                       *ngIf="selectedTab === EProfileTab.myJobs"></ngp-my-jobs>
+        </div>
+      </nz-spin>
+
+      <nz-footer>
+        <ngp-footer></ngp-footer>
+      </nz-footer>
+
+    </nz-content>
+    <!--    </nz-spin>-->
+
+  </nz-layout>
+</nz-layout>
+<ng-template #zeroTrigger>
+  <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
+</ng-template>

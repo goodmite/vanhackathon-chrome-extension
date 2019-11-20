@@ -1,0 +1,39 @@
+.grid-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 0.75fr 0.25fr;
+  grid-template-rows: 0.20fr 0.80fr;
+  grid-template-areas:
+    "header header"
+    "login-box login-box"
+    "footer .";
+  background: rgba(158, 158, 158, 0.24);
+  .footer {
+    grid-area: footer;
+  }
+
+  .header {
+    grid-area: header;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .login-box {
+    grid-area: login-box;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+h1 {
+  margin-bottom: 4px;
+  font-size: 32px;
+}
+
+h2 {
+  margin-bottom: 4px;
+  font-size: 20px;
+}

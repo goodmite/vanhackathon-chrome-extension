@@ -1,0 +1,30 @@
+<div style="display: flex; justify-content: flex-end">
+  <nz-badge [nzCount]="badgeCount">
+    <button nz-button nzType="primary" nzShape="circle" (click)="showFilterFormHandler()"><i nz-icon
+                                                                                             nzType="filter"></i>
+    </button>
+  </nz-badge>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Filter Jobs" (nzOnCancel)="cancel()"
+          (nzOnOk)="handleFilterModelSubmit()">
+  <form [formGroup]="filterForm">
+    <!--    <label nz-checkbox formControlName="remote">Remote</label>-->
+    <!--    <label nz-checkbox formControlName="vanhackteam">VanHack Team</label>-->
+    <!--    <div style="margin-top: 8px;"></div>-->
+
+    <p style="font-weight: bold; margin: 0">Location</p>
+    <ng-container formArrayName="country">
+      <label *ngFor="let place of countries; let i = index" nz-checkbox [formControlName]="i">{{place}}</label>
+    </ng-container>
+    <div style="margin-top: 8px;"></div>
+
+    <!--    <p style="font-weight: bold; margin: 0">Experience Level</p>-->
+    <!--    <label nz-checkbox formControlName="experience">0-3 Years</label>-->
+    <!--    <label nz-checkbox formControlName="experience">4-6 Years</label>-->
+    <!--    <label nz-checkbox formControlName="experience">7+ Years</label>-->
+  </form>
+</nz-modal>
+<ngp-job-teaser-list (applyForJob)="applyForJob$.emit($event)" [jobs]="jobs"></ngp-job-teaser-list>
+
+

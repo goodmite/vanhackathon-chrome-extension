@@ -1,0 +1,108 @@
+:host {
+  height: 10vh;
+  max-height: 100px;
+  border-right: 1px solid #8080805c;
+  border-bottom: 1px solid #8080805c;
+
+  &:hover {
+    background-color: #ededed;
+  }
+}
+
+.cell {
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+.event {
+  background: #3300ff66;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border: 1px solid white !important;
+  padding: 0;
+  margin-right: 2px;
+}
+
+.glowing {
+  animation: glow 1s infinite forwards;
+  .event-marking{
+    //z-index: 0;
+    //position: absolute;
+    //top: -2px;
+    //font-size: 8px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .event-marking-rejected{
+    //z-index: 0;
+    //position: absolute;
+    //top: 0px;
+    //font-size: 6px;
+    //left: 1px;
+  }
+  &::before {
+    content: '';
+    height: 10px;
+    width: 10px;
+    animation: glow1 1s infinite forwards;
+    //background: #0095ff4a;
+  }
+}
+
+@keyframes glow {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glow {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(2);
+  }
+}
+
+
+//::ng-deep {
+//  .ant-popover-title {
+//    padding: 9px 11px;
+//  }
+//}
+
+.cell-past{
+  opacity: 0.5;
+}
+
+.date-label{
+  width: 50px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.today{
+  font-weight: bold;
+}
+
+
+.event-marking{
+  z-index: 0;
+  position: absolute;
+  top: 4px;
+  font-size: 12px;
+  left: 1px;
+}

@@ -1,0 +1,5 @@
+
+<!--no support for routing in chrome extensions-->
+<ngp-login (login$)="loginHandler($event)" *ngIf="page === EPage.login"></ngp-login>
+<ngp-core (logout$)="logoutHandler()" *ngIf="page === EPage.profile"></ngp-core>
+

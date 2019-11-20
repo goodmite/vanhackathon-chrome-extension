@@ -1,0 +1,30 @@
+<div style="padding: 5px 10px; display: flex;align-items: center; height: 100%">
+  <img style="height: 32px; width: 32px; border-radius: 50%"
+       src="{{vanHackLogo}}" alt="">
+  <h3 style="padding: 0; margin: 0; margin-left: 10px; color: #00008bbf"><i nz-icon nzType="{{tabMap[tab].icon}}"
+                                                                            nzTheme="outline"></i> {{tabMap[tab].title}}
+  </h3>
+  <div  style="margin-left: auto; height: 100%; display: flex; align-items: center">
+    <nz-badge [nzCount]="SocketService.count"
+              (click)="navigateToNotificationPage()"
+              [nzStyle]="{ backgroundColor: '#52c41a' }"
+              style="margin-right: 15px; cursor: pointer"
+    ><i nz-icon nzType="notification" style="font-size: 21px;"></i></nz-badge>
+<!--  <div style="text-align: right; margin-right: 4px;">-->
+<!--    <p style="margin-right: 4px; font-weight: bold; height: 16px">{{user?.name}}</p>-->
+<!--    <p style="margin-right: 4px;">{{user?.email}}</p>-->
+<!--  </div>-->
+    <img style="height: 32px; width: 32px; border-radius: 50%; margin-left: auto;"
+         nz-dropdown
+         [nzDropdownMenu]="menu"
+         src="{{user?.image||'https://icon-library.net/images/unknown-person-icon/unknown-person-icon-4.jpg'}}"
+         alt="">
+  </div>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu nzSelectable style="min-width: 120px;">
+      <li nz-menu-item style="cursor: text !important;">{{user?.name}}</li>
+      <li nz-menu-item><a target="_blank" href="https://vanhack.com/platform/Profile">Profile (site)</a></li>
+      <li nz-menu-item (click)="logout$.emit()">Logout</li>
+    </ul>
+  </nz-dropdown-menu>
+</div>

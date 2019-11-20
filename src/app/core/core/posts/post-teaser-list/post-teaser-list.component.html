@@ -1,0 +1,7 @@
+<div class="post-teaser-list-section">
+  <div *ngFor="let post of (posts$|async)?.items">
+    <div class="item">
+      <ngp-post-teaser [post]="post"></ngp-post-teaser>
+    </div>
+  </div>
+</div>

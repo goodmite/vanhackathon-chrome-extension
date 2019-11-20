@@ -1,0 +1,69 @@
+<div class="cell"
+     [ngClass]="{'cell-past': _data.isPast}"
+     (click)="eventHovered$.emit(null)">
+  <span
+    [ngClass]="{today: UtilityService.isSameDay(_data.date, today)}"
+  >{{_data.date|date:'d'}}</span>
+
+  <div style="display: flex; flex-wrap: wrap; position: relative" (click)="$event.stopPropagation()">
+    <div
+      *ngFor="let eventItem of _data.events" [nz-tooltip]="eventItem.name"
+      nzOverlayClassName="test12"
+      class="event"
+      style="position: relative"
+      [ngClass]="{'glowing': highlightedEvent && eventItem && (highlightedEvent.id === eventItem.id || highlightedEvent.type === eventItem.type)}"
+      [ngStyle]="{'backgroundColor': eventItem?.type|eventColor}"
+    >
+        <i class="event-marking" *ngIf="(eventItem|eventMarked: user._id) === 'accepted'" nz-icon nzType="check"></i>
+        <i class="event-marking" *ngIf="(eventItem|eventMarked: user._id) === 'rejected'" nz-icon nzType="close"></i>
+      <div
+        style="height: 10px; width: 10px; padding: 0;position: absolute; opacity: 0"
+        (click)="popoverHandler()"
+        nz-button nz-popover [nzTitle]="contentTemplateTitle" [nzContent]="contentTemplate" nzTrigger="click"
+        (nzVisibleChange)="log($event)"
+        (mouseover)="eventHoveredHandler(eventItem)"
+        (mouseout)="!opened && eventHovered$.emit(null)"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #contentTemplateTitle>
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <span>{{eventHovered.name}}</span>
+    <nz-tag style="margin-bottom: 5px;" [nzColor]="eventHovered.type|eventColor">{{eventHovered.type}}</nz-tag>
+  </div>
+</ng-template>
+
+
+<ng-template #contentTemplate>
+  <div>
+    <p><span class="date-label">From</span>: {{eventHovered.from|date:'medium'}}</p>
+    <p><span class="date-label">TO</span>: {{eventHovered.to|date:'medium'}}</p>
+    <p><span class="date-label">Where</span>: Online</p>
+    <p style="width: 275px">
+      <span class="date-label">Detail</span>: {{eventHovered.detail}} </p>
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 10px">
+      <ng-container *ngIf="!(eventHovered|eventMarked:user._id); else marking">
+        <button [nz-tooltip]="'Reject event'"
+                (click)="markEvent$.emit({event:eventHovered, accept: false})"
+                style="margin-right: 5px" nz-button nzType="default">
+          <i nz-icon nzType="close"></i>
+        </button>
+        <button [nz-tooltip]="'Accept event'"
+                (click)="markEvent$.emit({event:eventHovered, accept: true})"
+                nz-button nzType="primary"><i nz-icon nzType="check"></i></button>
+      </ng-container>
+      <ng-template #marking>
+        <button [nz-tooltip]="'Accept event'"
+                disabled
+                (click)="markEvent$.emit({event:eventHovered, accept: true})"
+                nz-button nzType="primary">
+          <i nz-icon nzType="{{(eventHovered|eventMarked:user._id)==='accepted'? 'check': 'close'}}"></i>
+          {{eventHovered|eventMarked:user._id|titlecase}}
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>

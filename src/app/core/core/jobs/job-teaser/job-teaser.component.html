@@ -1,0 +1,54 @@
+<nz-card nzType="inner" style="margin-top:16px;" [nzTitle]="title" [nzExtra]="extraTemplate">
+  <p nz-paragraph nzEllipsis [nzExpandable]="expand" [nzEllipsisRows]="3" (nzExpandChange)="expanded = !expanded">
+    {{expanded ? '' : job.description}}
+    <span *ngIf="expanded" [innerHTML]="job.descriptionHtml"></span>
+  </p>
+  <div style="margin-top: 5px">
+    <nz-tag style="margin-bottom: 5px;" [nzColor]="'magenta'"
+            *ngFor="let skill of job.mustHaveSkills">{{skill.name}}</nz-tag>
+    <nz-tag style="margin-bottom: 5px;" [nzColor]="'green'"
+            *ngFor="let skill of job.mustHaveSkills">{{skill.name}}</nz-tag>
+  </div>
+</nz-card>
+
+<ng-template #title>
+  <span>
+    {{job.positionName}} ({{job.country}})
+    <!--angular doesnt have *ngSwitchCase with break. https://github.com/angular/angular/issues/19824-->
+    <nz-tag *ngIf="job|jobApplied as action" style="margin-bottom: 5px;"
+            [nzColor]="'#87d068'">Stage: {{action === 'hire' ? 'Hired' : action === 'apply' ? 'Applied' : action|titlecase}}</nz-tag>
+  </span>
+</ng-template>
+<ng-template #extraTemplate>
+  <a nz-dropdown [nzDropdownMenu]="menu">
+    <i nz-icon nzType="more"></i>
+  </a>
+  <!---->
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+      <li nz-menu-item
+          *ngIf="!(job|jobApplied:'apply') && !(job|jobApplied:'hire') && !(job|jobApplied:'interview') &&!(job|jobApplied:'offer')"
+          (click)="applyForJob.emit({job: job, action: 'apply'})">Apply
+      </li>
+      <li nz-menu-item><a target="_blank" href="https://vanhack.com/platform/#/jobs/{{job.id}}">Open (site)</a></li>
+      <ng-container *ngIf="!hideAdminControls">
+        <li nz-menu-item
+            *ngIf="!(job|jobApplied:'hire') && !(job|jobApplied:'interview') &&!(job|jobApplied:'offer')"
+            (click)="applyForJob.emit({job: job, action: 'interview'})">Interview (just for Admin testing)
+        </li>
+        <li nz-menu-item
+            *ngIf="!(job|jobApplied:'hire') &&!(job|jobApplied:'offer')"
+            (click)="applyForJob.emit({job: job, action: 'offer'})"
+        >Offer
+          (just for Admin testing)
+        </li>
+        <li nz-menu-item
+
+            (click)="applyForJob.emit({job: job, action: 'hire'})"
+        >Hire
+          (just for Admin testing)
+        </li>
+      </ng-container>
+    </ul>
+  </nz-dropdown-menu>
+</ng-template>

@@ -1,0 +1,32 @@
+.calender-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  border-top: 1px solid #8080805c;
+  border-left: 1px solid #8080805c;
+}
+
+
+.title{
+  border-bottom: 1px solid #8080805c;
+  border-right: 1px solid #8080805c;
+  padding: 4px;
+  font-weight: bold;
+}
+
+nz-tag{
+  cursor: pointer;
+}
+
+.event-highlight-action{
+  margin-right: 5px;
+  height: 23px;
+  font-size: 12px;
+}
+
+.month-control{
+  cursor: pointer;
+}
+
+.hovered{
+  border: 1px solid #f1f1f1;
+}

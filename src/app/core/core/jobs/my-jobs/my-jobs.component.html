@@ -1,0 +1,25 @@
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'" [(nzSelectedIndex)]="index"
+           (nzSelectedIndexChange)="loadJobsHandler($event)">
+  <div>
+    <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab" style="position:relative;position:relative; min-height: 300px; background-color: red">
+      <div style="display: flex; justify-content: flex-end" *ngIf="index === 1">
+        <button nz-button nz-dropdown [nzDropdownMenu]="menu4">
+          Select
+          <i nz-icon nzType="down"></i>
+        </button>
+        <nz-dropdown-menu #menu4="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item (click)="loadJobs.emit('interview')">Interview</li>
+            <li nz-menu-item (click)="loadJobs.emit('offered')">Offered</li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+      <ngp-job-teaser-list [hideAdminControls]="true"  *ngIf="jobs.length  !== 0" [expand]="expand" [jobs]="jobs"></ngp-job-teaser-list>
+      <div  style="min-height: 300px; position:relative;" *ngIf="!jobs || jobs.length === 0">
+        <div class="center-absolute">
+          <nz-empty></nz-empty>
+        </div>
+      </div>
+    </nz-tab>
+  </div>
+</nz-tabset>

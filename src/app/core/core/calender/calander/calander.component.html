@@ -1,0 +1,44 @@
+<div style="display: flex; justify-content: space-between" (click)="hovered = null">
+  <div>
+    <i class="month-control" nz-icon nzType="caret-left" nzTheme="outline" (click)="addAMonthToDate(-1)"></i>
+    <strong>
+      {{firstDayOfMonth|date:"MMM-yy"}}
+    </strong>
+    <i class="month-control" nz-icon nzType="caret-right" nzTheme="outline" (click)="addAMonthToDate(1)"></i>
+  </div>
+  <div style="margin-bottom: 6px; display: flex; justify-content: flex-end">
+    <button
+      *ngFor="let eventType of eventTypeArray"
+      [ngStyle]="{border: '1px solid '+ (eventType|eventColor)}"
+      [nz-tooltip]="'Highlight all ' + eventType"
+      class="event-highlight-action" nz-button (click)="highlightEvents(eventType);$event.stopPropagation()"
+            >{{eventType}}
+    </button>
+<!--    <button class="event-highlight-action" nz-button (click)="highlightEvents(EEventType.Missions)"-->
+<!--            style="border: 1px solid #2db7f5">Missions-->
+<!--    </button>-->
+<!--    <button class="event-highlight-action" nz-button (click)="highlightEvents(EEventType.VanHackathons)"-->
+<!--            style="border: 1px solid #87d068">VanHackathons-->
+<!--    </button>-->
+<!--    <button class="event-highlight-action" nz-button (click)="highlightEvents(EEventType.Webinar)"-->
+<!--            style="border: 1px solid #108ee9">Webinars-->
+<!--    </button>-->
+  </div>
+</div>
+<div class="calender-grid">
+  <div class="title">S</div>
+  <div class="title">M</div>
+  <div class="title">T</div>
+  <div class="title">W</div>
+  <div class="title">T</div>
+  <div class="title">F</div>
+  <div class="title">S</div>
+  <ngp-calander-cell
+    *ngFor="let cellData of events|eventMonthGrid: firstDayOfMonth; let index = index"
+    (eventHovered$)="eventHighlighted($event)"
+    [highlightedEvent]="hovered"
+    (markEvent$)="markEvent($event)"
+    [ngStyle]="{'backgroundColor':  (cellData|cellHighlightPipe:hovered)? (hoveredType|eventColor):''}"
+    [data]="cellData"
+  ></ngp-calander-cell>
+</div>

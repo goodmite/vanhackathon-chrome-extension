@@ -1,0 +1,33 @@
+
+
+.login-form {
+  min-width: 300px;
+  max-width: 350px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+
+.login-form-button {
+  width: 100%;
+}
+
+.muted {
+  //color: rgba(0, 0, 0, 0.56) !important;
+}
+
+nz-form-label {
+  line-height: 10px;
+  ::ng-deep {
+    label {
+      font-size: 10px !important;
+      color: #0000005c !important;
+    }
+  }
+}
+
+nz-form-item {
+  margin-bottom: 10px;
+}

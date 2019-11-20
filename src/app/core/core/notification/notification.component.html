@@ -1,0 +1,29 @@
+<nz-tabset>
+  <nz-tab nzTitle="Unread" (nzClick)="showRead = false">
+    <ng-container *ngTemplateOutlet="list"></ng-container>
+  </nz-tab>
+  <nz-tab nzTitle="Read" (nzClick)="showRead = true">
+    <ng-container *ngTemplateOutlet="list"></ng-container>
+  </nz-tab>
+</nz-tabset>
+
+<ng-template #list>
+  <ng-container *ngFor="let item of notification.reverse()">
+    <div  *ngIf="item.read == showRead" style="margin-bottom: 5px">
+      <nz-alert nzType="info" nzMessage="{{item.title|| item.message}}"
+                [nzDescription]="details"
+                [nzCloseable]="false"
+                [nzShowIcon]="false"
+                (nzOnClose)="!item.read && markAsRead$.emit(item)"
+                nzCloseText="{{!item.read?'Ok':''}}"></nz-alert>
+      <ng-template #details>
+        <span [innerHTML]="item.details"></span>
+      </ng-template>
+    </div>
+  </ng-container>
+  <div  style="min-height: 300px; position:relative;" *ngIf="!notification || (notification|notificationFiler: showRead).length === 0">
+    <div class="center-absolute">
+      <nz-empty [nzNotFoundContent]="'Nothing to see here'"></nz-empty>
+    </div>
+  </div>
+</ng-template>

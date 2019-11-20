@@ -1,0 +1,18 @@
+.profile-section{
+  padding: 0 32px;
+  width: 70%;
+  .setting-section{
+    display: flex;
+    .personal-info{
+      flex: 1;
+    }
+    .credentials{
+      flex: 1;
+    }
+  }
+}
+
+:host{
+  display: flex;
+  justify-content: center;
+}

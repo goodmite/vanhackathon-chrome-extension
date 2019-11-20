@@ -1,0 +1,84 @@
+<div>
+  <header>
+    <h2>{{mode === 'login' ? 'Log in' : 'Sign Up'}}</h2>
+  </header>
+  <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <nz-form-item *ngIf="mode === 'signup'">
+      <nz-form-label nzFor="name">Name</nz-form-label>
+      <nz-form-control nzErrorTip="Please input your name!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="name" placeholder="Name"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label nzFor="name">Email</nz-form-label>
+      <nz-form-control nzErrorTip="Please input your email!" email>
+        <nz-input-group nzPrefixIcon="mail">
+          <input type="text" nz-input formControlName="email" placeholder="Email"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="name">Password</nz-form-label>
+      <nz-form-control [nzErrorTip]="PasError">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="password" placeholder="Password"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <ng-template #PasError>
+      <span *ngIf="validateForm.get('password')?.errors?.error as message">{{message}}</span>
+    </ng-template>
+
+    <ng-template #confirmPassError>
+      <span *ngIf="validateForm.get('confirm_password')?.errors?.error as message">{{message}}</span>
+    </ng-template>
+
+    <nz-form-item *ngIf="mode === 'signup'">
+      <nz-form-label nzFor="name">Confirm Password</nz-form-label>
+      <nz-form-control [nzErrorTip]="confirmPassError">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="confirm_password" placeholder="Confirm Password"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control>
+        <!--        <a class="login-form-forgot text-small">Forgot password</a>-->
+        <div *loadify="'api/users/login'; let statusChanged$ = statusChanged$">
+          <button
+            [disabled]="!validateForm.valid"
+            [nzLoading]="(statusChanged$|async)?.loading" nz-button
+            class="login-form-button"
+            [nzType]="(statusChanged$|async)?.error?'danger':'primary'">{{mode === 'login' ? 'Log in' : 'Sign Up'}}
+          </button>
+          <i>{{(statusChanged$|async)?.error_message}}</i>
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+    <div style="display: flex; justify-content: flex-end; align-items: center">
+<!--      <button (click)="login$.emit({user:{provider: 'google'}});" type="button" nz-tooltip="Sign in with google" nz-button-->
+<!--              nzType="primary" nzShape="circle"><i nz-icon-->
+<!--                                                   nzType="google"-->
+<!--                                                   nzTheme="outline"></i>-->
+<!--      </button>-->
+      <div style="margin-left: auto">
+        New to VanHack?
+        <button *ngIf="mode === 'login' else loginMode" (click)="changeMode('signup')" type="button"
+                style="padding: 0; padding-left: 4px" nz-button nzType="link">Register
+        </button>
+        <ng-template #loginMode>
+          <button type="button" (click)="changeMode('login')" style="padding: 0; padding-left: 4px" nz-button
+                  nzType="link">
+            Login
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </form>
+</div>
+<!---->

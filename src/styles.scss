@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./sass/main.scss";
+
+body{
+  height: 600px;
+  width: 600px;
+}
+
+.text-small{
+  font-size: 12px;
+}
+
+.error{
+  border: 1px solid $color-danger !important;
+}
+
+p{
+  margin: 0;
+}
+
+
+.center-absolute{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  //transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}

@@ -1,0 +1,16 @@
+<div class="post-edit-section">
+  <header>
+    <h1>
+      <i nz-icon nzType="form" nzTheme="outline"></i>
+      New Post
+    </h1>
+  </header>
+  <form [formGroup]="postForm">
+    <nz-form-control nzErrorTip="Please input post title!">
+      <nz-input-group nzPrefixIcon="double-right">
+        <input type="text" nz-input formControlName="title" placeholder="Title"/>
+      </nz-input-group>
+    </nz-form-control>
+    <ngp-editor formControlName="text"></ngp-editor>
+  </form>
+</div>
