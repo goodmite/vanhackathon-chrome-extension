@@ -30,7 +30,7 @@ Other libraries:
 
 
 # Running the project
-Go to chrome webstore and install extension: [link](https://chrome.google.com/webstore/detail/vanhack-quick-access/ccedfcdijipjpkclkdehieejnddhdmdd)
+**Simply go to chrome webstore and install extension: [link](https://chrome.google.com/webstore/detail/vanhack-quick-access/ccedfcdijipjpkclkdehieejnddhdmdd)**
 
 OR
 
