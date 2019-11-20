@@ -6,6 +6,7 @@ import {HttpService} from '../../../projects/http/src/lib/http.service';
 import {UrlService} from '../services/url.service';
 import {IUser} from '../typings/auth';
 import {AuthStorageService} from '../auth/auth.service';
+import {SocketService} from '../socket.service';
 
 @Component({
   selector: 'ngp-root',
@@ -44,6 +45,7 @@ export class AppComponent implements OnInit {
 
   logoutHandler() {
     AuthStorageService.removeUser();
+    SocketService.count = 0;
     this.page = EPage.login;
   }
 
@@ -96,7 +98,6 @@ export class AppComponent implements OnInit {
       this.startAuth(user, action);
     }
   }
-
 
 
 }

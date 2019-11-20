@@ -95,7 +95,7 @@ export class CoreComponent implements OnInit {
   }
 
   sidebarTabChangedHandler(tab: EProfileTab) {
-    this.isCollapsed = true;
+    // this.isCollapsed = true;
     this.selectedTab = tab;
     if (this.selectedTab === EProfileTab.myJobs) {
       this.loadJobs({apply: this.user._id});

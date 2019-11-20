@@ -9,7 +9,7 @@
   </nz-sider>
   <nz-layout>
     <nz-header style=" position: fixed;
-        width: 100%; z-index: 2">
+        left: 0; right: 0; z-index: 2">
       <ngp-profile-header [user]="user"
                           (sidebarTabChanged$)="sidebarTabChangedHandler($event)"
                           (logout$)="logout$.emit()" [tabMap]="tabMap"
