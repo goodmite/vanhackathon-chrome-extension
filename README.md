@@ -30,8 +30,14 @@ Other libraries:
 
 
 # Running the project
-I published the chrome extension on webstore but its still under review. However, its very easy to run the chrome extension locally
-1. Clone this project
+Go to chrome webstore and install extension: [link](https://chrome.google.com/webstore/detail/vanhack-quick-access/ccedfcdijipjpkclkdehieejnddhdmdd)
+
+OR
+
+To test locally:
+
+Fronted:
+1. Clone this project and ```run npm i && ng build --watch```
 1. Open Chrome browser
 2. go to chrome://extensions
 3. Turn on developer mode
@@ -39,3 +45,8 @@ I published the chrome extension on webstore but its still under review. However
 5. Select folder named: CHROME_EXTENSION
 6. Click on VanHack icon to run the extension.
 
+Backend:
+
+1. Clone backend repo found [here](https://github.com/goodmite/vh2019-be)
+2. run ```npm install```
+3. run ```npm start```
