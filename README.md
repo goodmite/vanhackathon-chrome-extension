@@ -6,6 +6,8 @@ Note: this is frontend repo. Backend repo is [here](https://github.com/goodmite/
 
 VanHack quick access is a chrome extension that will allow you to easily access job update, track, accept or reject events and get realtime notification. You can apply to jobs, check and update event in no time!
 
+[Link to chrome webstore](https://chrome.google.com/webstore/detail/vanhack-quick-access/ccedfcdijipjpkclkdehieejnddhdmdd)
+
 ## Problem details
 This Project is made to solve to problem propsed in the prep kit: 
 1. Surprise Us - A quick an easy way to access job and get realtime notifications for job updates.
