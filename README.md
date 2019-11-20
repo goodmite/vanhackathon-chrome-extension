@@ -37,7 +37,7 @@ OR
 To test locally:
 
 Fronted:
-1. Clone this project and ```run npm i && ng build --watch```
+1. Clone this project and run ``` npm i && ng build --watch```
 1. Open Chrome browser
 2. go to chrome://extensions
 3. Turn on developer mode
