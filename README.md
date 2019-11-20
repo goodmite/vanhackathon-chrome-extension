@@ -19,6 +19,7 @@ The goal of this extension is to put most common functionalities of the site (li
 3. NestJs
 4. MongoDB
 5. Socket.io
+6. Typescript
 
 Other libraries:
 1. ngx-loadify (my own library)
