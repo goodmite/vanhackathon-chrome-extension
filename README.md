@@ -1,27 +1,38 @@
-# NgPerfect
+Note: this is frontend repo. Backend repo is [here](https://github.com/goodmite/vh2019-be). Product hunt link [here](https://www.producthunt.com/posts/vanhackathon-vanhack-chorme-extension)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+# VanHack quick-acess chrome Extension
 
-## Development server
+VanHack quick access is a chrome extension that will allow you to easily access job update, events. You can apply to jobs, check and update event in no time!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Problem details
+This Project is made to solve to problem propsed in the prep kit: 
+1. Surprise Us - A quick an easy way to access job and notifications.
+2. Calendar Page - Please checkout Events tab in extension. 
 
-## Code scaffolding
+## Motivation
+As a VanHack user, I have experienced that to stay up to date with status of job applications, new Job and event I need to regularly keep checking the site or my email. Its quite tedius and sometimes impractical, like when I am at workplace.
+The goal of this extension is to put most common functionalities of the site (like Job listing, Job application, notification) just a click away.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tech stack
+1. Angular 8
+2. NodeJs
+3. NestJs
+4. MongoDB
+5. Socket.io
 
-## Build
+Other libraries:
+1. ngx-loadify (my own library)
+2. ng-clickoutside
+3. ng-zorro
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+# Running the project
+I published the chrome extension on webstore but its still under review. However, its very easy to run the chrome extension locally
+1. Clone this project
+1. Open Chrome browser
+2. go to chrome://extensions
+3. Turn on developer mode
+4. Click on Load Unpacked. A file dialog will open up.
+5. Select folder named: CHROME_EXTENSION
+6. Click on VanHack icon to run the extension.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
