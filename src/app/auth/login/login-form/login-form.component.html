@@ -61,11 +61,11 @@
       </nz-form-control>
     </nz-form-item>
     <div style="display: flex; justify-content: flex-end; align-items: center">
-<!--      <button (click)="login$.emit({user:{provider: 'google'}});" type="button" nz-tooltip="Sign in with google" nz-button-->
-<!--              nzType="primary" nzShape="circle"><i nz-icon-->
-<!--                                                   nzType="google"-->
-<!--                                                   nzTheme="outline"></i>-->
-<!--      </button>-->
+      <button (click)="login$.emit({user:{provider: 'google'}});" type="button" nz-tooltip="Sign in with google" nz-button
+              nzType="primary" nzShape="circle"><i nz-icon
+                                                   nzType="google"
+                                                   nzTheme="outline"></i>
+      </button>
       <div style="margin-left: auto">
         New to VanHack?
         <button *ngIf="mode === 'login' else loginMode" (click)="changeMode('signup')" type="button"
