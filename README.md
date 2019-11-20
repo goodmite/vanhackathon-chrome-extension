@@ -9,7 +9,7 @@ VanHack quick access is a chrome extension that will allow you to easily access 
 [Link to chrome webstore](https://chrome.google.com/webstore/detail/vanhack-quick-access/ccedfcdijipjpkclkdehieejnddhdmdd)
 
 ## Problem details
-This Project is made to solve two problem propsed in the prep kit: 
+This Project is made to solve two problem mentioned in the prep kit: 
 1. Surprise Us - A quick an easy way to access job and get realtime notifications for job updates.
 2. Calendar Page - Please checkout Events tab in extension. 
 
