@@ -1,4 +1,4 @@
-**info**: This project was created as a part of 5 Day Hackathon organized by VanHack and won **top spot among 700+ projects**. I dont plan to maintain it in future, however feel free to fork it and improve as you wish.
+**Info**: This project was created as a part of 5 Day Hackathon organized by VanHack and won **top spot among 700+ projects**. I dont plan to maintain it in future, however feel free to fork it and improve as you wish.
 <hr>  
 <img src="https://ph-files.imgix.net/3586e786-1446-4987-9eda-7565dd61d213?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=381.6907675194661&h=380&fit=max&dpr=2">
 
